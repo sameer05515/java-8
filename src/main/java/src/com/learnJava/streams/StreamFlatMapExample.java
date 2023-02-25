@@ -11,10 +11,16 @@ public class StreamFlatMapExample {
 
     public static List<String> printStudentActivities() {
 
+//        List<String> studentActivities = StudentDataBase.getAllStudents()
+//                .stream()
+//                .map(Student::getActivities) //Stream<List<String>>
+//                .flatMap(List::stream) //<Stream<String>
+//                .collect(toList());
+
         List<String> studentActivities = StudentDataBase.getAllStudents()
                 .stream()
-                .map(Student::getActivities) //Stream<List<String>>
-                .flatMap(List::stream) //<Stream<String>
+//                .map(Student::getActivities) //Stream<List<String>>
+                .flatMap(student -> student.getActivities().stream()) //<Stream<String>
                 .collect(toList());
 
         return studentActivities;

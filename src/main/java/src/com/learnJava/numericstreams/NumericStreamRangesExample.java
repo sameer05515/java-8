@@ -23,5 +23,17 @@ public class NumericStreamRangesExample {
         System.out.println();
         LongStream.rangeClosed(1,50).asDoubleStream().forEach(value -> System.out.print(value+","));
 
+        IntStream.rangeClosed(1,5).forEach(value -> {
+            IntStream.rangeClosed(1,value).forEach(innerValue->System.out.print("* "));
+            System.out.println();
+        });
+
+        int numberOfRows=5;
+        IntStream.rangeClosed(1,numberOfRows).forEach(value -> {
+            IntStream.rangeClosed(1,numberOfRows-value).forEach(innerValue->System.out.print("  "));
+            IntStream.rangeClosed(1,value).forEach(innerValue->System.out.print("* "));
+            System.out.println();
+        });
+
     }
 }
